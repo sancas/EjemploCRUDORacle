@@ -495,7 +495,7 @@ public class ProgramaFRM extends javax.swing.JFrame {
         disc.setGenero(d_genero.getText());
         disc.setPrecio(Double.parseDouble(d_precio.getText()));
         disc.setId_proveedor(p_disc);
-        String resp = DiscosDAO.registrarDisco(disc);
+        String resp = DiscosDAO.actualizarDisco(disc);
         d_clave.setText("");
         d_nombre.setText("");
         d_autor.setText("");
