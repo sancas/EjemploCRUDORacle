@@ -15,7 +15,7 @@ public class ProveedoresDAO {
         ConexionBD cc = new ConexionBD();
         Connection cn = cc.getConnection();
         PreparedStatement pst = null;
-        String sql = "INSERT INTO proveedores values(null,?,?,?,?)";
+        String sql = "INSERT INTO usuario1.proveedores values(null,?,?,?,?)";
         try {
             pst = cn.prepareStatement(sql);
             pst.setString(1, prov.getNombre());
@@ -23,7 +23,7 @@ public class ProveedoresDAO {
             pst.setString(3, prov.getDireccion());
             pst.setString(4, prov.getEmail());
             pst.execute();
-            pst = cn.prepareStatement("SELECT MAX(id_proveedor) AS id FROM proveedores");
+            pst = cn.prepareStatement("SELECT MAX(id_proveedor) AS id FROM usuario1.proveedores");
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 last = rs.getString(1);
@@ -49,7 +49,7 @@ public class ProveedoresDAO {
         ConexionBD cc = new ConexionBD();
         Connection cn = cc.getConnection();
         PreparedStatement pst = null;
-        String sql = "UPDATE proveedores SET nombre=?,telefono=?,direccion=?,email=? WHERE id_proveedor=?";
+        String sql = "UPDATE usuario1.proveedores SET nombre=?,telefono=?,direccion=?,email=? WHERE id_proveedor=?";
         try {
             pst = cn.prepareStatement(sql);
             pst.setString(1, prov.getNombre());
@@ -80,7 +80,7 @@ public class ProveedoresDAO {
         ConexionBD cc = new ConexionBD();
         Connection cn = cc.getConnection();
         PreparedStatement pst = null;
-        String sql = "SELECT * FROM proveedores WHERE id_proveedor = ?";
+        String sql = "SELECT * FROM usuario1.proveedores WHERE id_proveedor = ?";
         try {
             pst = cn.prepareStatement(sql);
             pst.setString(1, clave);
@@ -113,7 +113,7 @@ public class ProveedoresDAO {
         ConexionBD cc = new ConexionBD();
         Connection cn = cc.getConnection();
         PreparedStatement pst = null;
-        String sql = "DELETE FROM proveedores WHERE id_proveedor = ?";
+        String sql = "DELETE FROM usuario1.proveedores WHERE id_proveedor = ?";
         try {
             pst = cn.prepareStatement(sql);
             pst.setString(1, clave);
@@ -140,7 +140,7 @@ public class ProveedoresDAO {
         Connection cn = cc.getConnection();
         PreparedStatement pst = null;
         ProveedoresVO prov = null;
-        String sql = "SELECT * FROM proveedores";
+        String sql = "SELECT * FROM usuario1.proveedores";
         try {
             pst = cn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();

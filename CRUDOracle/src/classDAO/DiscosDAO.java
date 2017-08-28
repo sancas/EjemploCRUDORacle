@@ -15,7 +15,7 @@ public class DiscosDAO {
         ConexionBD cc = new ConexionBD();
         Connection cn = cc.getConnection();
         PreparedStatement pst = null;
-        String sql = "INSERT INTO discos VALUES(null,?,?,?,?,?)";
+        String sql = "INSERT INTO usuario1.discos VALUES(null,?,?,?,?,?)";
         try {
             if (cn != null) {
                 pst = cn.prepareStatement(sql);
@@ -25,7 +25,7 @@ public class DiscosDAO {
                 pst.setDouble(4, discoVO.getPrecio());
                 pst.setInt(5, discoVO.getId_proveedor());
                 pst.executeUpdate();
-                pst = cn.prepareStatement("SELECT MAX(id_disco) AS id FROM discos");
+                pst = cn.prepareStatement("SELECT MAX(id_disco) AS id FROM usuario1.discos");
                 ResultSet rs = pst.executeQuery();
                 if (rs.next()) {
                     last = rs.getString(1);
@@ -52,7 +52,7 @@ public class DiscosDAO {
         ConexionBD cc = new ConexionBD();
         Connection cn = cc.getConnection();
         PreparedStatement pst = null;
-        String sql = "UPDATE discos SET nombre=?,autor=?,genero=?,precio=?,id_proveedor=? WHERE id_disco=?";
+        String sql = "UPDATE usuario1.discos SET nombre=?,autor=?,genero=?,precio=?,id_proveedor=? WHERE id_disco=?";
         try {
             if (cn != null) {
                 pst = cn.prepareStatement(sql);
@@ -85,7 +85,7 @@ public class DiscosDAO {
         ConexionBD cc = new ConexionBD();
         Connection cn = cc.getConnection();
         PreparedStatement pst = null;
-        String sql = "SELECT * FROM discos WHERE id_disco = ?";
+        String sql = "SELECT * FROM usuario1.discos WHERE id_disco = ?";
         try {
             if (cn != null) {
                 pst = cn.prepareStatement(sql);
@@ -121,7 +121,7 @@ public class DiscosDAO {
         ConexionBD cc = new ConexionBD();
         Connection cn = cc.getConnection();
         PreparedStatement pst = null;
-        String sql = "DELETE FROM discos WHERE id_disco = ?";
+        String sql = "DELETE FROM usuario1.discos WHERE id_disco = ?";
         try {
             if (cn != null) {
                 pst = cn.prepareStatement(sql);
@@ -150,7 +150,7 @@ public class DiscosDAO {
         Connection cn = cc.getConnection();
         PreparedStatement pst = null;
         DiscosVO discoVO = null;
-        String sql = "SELECT * FROM discos";
+        String sql = "SELECT * FROM usuario1.discos";
         try {
             if (cn != null) {
                 pst = cn.prepareStatement(sql);
