@@ -71,6 +71,10 @@ public class ProgramaFRM extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_general = new javax.swing.JTable();
         buscageneral = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabla_proveedores = new javax.swing.JTable();
+        buscaproveedores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -360,6 +364,40 @@ public class ProgramaFRM extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("tabla discos", jPanel3);
 
+        jScrollPane2.setViewportView(tabla_proveedores);
+
+        buscaproveedores.setText("Buscar Todo");
+        buscaproveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscaproveedoresActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(220, 220, 220)
+                .addComponent(buscaproveedores)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(buscaproveedores)
+                .addContainerGap(52, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("tabla proveedores", jPanel4);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -534,6 +572,25 @@ public class ProgramaFRM extends javax.swing.JFrame {
         tabla_general.setModel(modelo);
     }//GEN-LAST:event_buscageneralActionPerformed
 
+    private void buscaproveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaproveedoresActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("ID");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Telefono");
+        modelo.addColumn("Direccion");
+        tabla_proveedores.setModel(modelo);
+        Object[] arrProveedores = new Object[4];
+        for(ProveedoresVO prov: ProveedoresDAO.getListProveedores()){
+            arrProveedores[0] = prov.getId_proveedor();
+            arrProveedores[1] = prov.getNombre();
+            arrProveedores[2] = prov.getTelefono();
+            arrProveedores[3] = prov.getDireccion();
+            modelo.addRow(arrProveedores);
+        }
+        tabla_proveedores.setModel(modelo);
+    }//GEN-LAST:event_buscaproveedoresActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -586,6 +643,7 @@ public class ProgramaFRM extends javax.swing.JFrame {
     private javax.swing.JButton actualizarDisco;
     private javax.swing.JButton actualizarProveedor;
     private javax.swing.JButton buscageneral;
+    private javax.swing.JButton buscaproveedores;
     private javax.swing.JButton buscarDisco;
     private javax.swing.JButton buscarProveedor;
     private javax.swing.JTextField d_autor;
@@ -610,7 +668,9 @@ public class ProgramaFRM extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton limpiarDisco;
     private javax.swing.JButton limpiarProveedor;
@@ -623,5 +683,6 @@ public class ProgramaFRM extends javax.swing.JFrame {
     private javax.swing.JTextField p_telefono;
     private javax.swing.JButton registrarDisco;
     private javax.swing.JTable tabla_general;
+    private javax.swing.JTable tabla_proveedores;
     // End of variables declaration//GEN-END:variables
 }

@@ -148,6 +148,8 @@ public class ProveedoresDAO {
                 prov = new ProveedoresVO();
                 prov.setId_proveedor(Integer.parseInt(rs.getString(1)));
                 prov.setNombre(rs.getString(2));
+                prov.setTelefono(rs.getString(3));
+                prov.setDireccion(rs.getString(4));
                 if (arrProv.isEmpty()) {
                     arrProv.add(0, prov);
                 } else {
